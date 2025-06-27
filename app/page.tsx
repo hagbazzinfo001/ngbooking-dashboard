@@ -106,7 +106,6 @@ export default function Home() {
             </Button>
           </motion.div>
         </motion.div>
-
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -127,13 +126,11 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-
       {/* Features Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <Badge className="mb-4 bg-[#a50050] text-white hover:bg-[#880e4f]">
-              {" "}
               Premium Experience
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -144,7 +141,6 @@ export default function Home() {
               amenities designed to make your stay extraordinary and memorable.
             </p>
           </motion.div>
-
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -213,9 +209,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* Stats Section */}
-      {/* <section className="py-20 bg-gradient-to-r from-slate-900 to-slate-800 text-white"> */}
       <section className="py-20 bg-[#a50050] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div

@@ -206,22 +206,18 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* <div className="min-h-screen w-full flex bg-gray-50 dark:bg-gray-900 transition-colors duration-200 overflow-x-hidden"> */}
-      <div className="min-h-screen w-full flex  flex-row  gap-2 bg-gray-50 dark:bg-gray-900 transition-colors duration-200 overflow-x-hidden">
-        {/* Sidebar */}
+      <div className="min-h-screen w-screen max-w-screen overflow-x-hidden flex flex-row gap-2 bg-gray-50 dark:bg-gray-900 transition-colors duration-200 p-4 bg-[#F2F2F7] dark:bg-gray-900">
         <motion.div
           initial={false}
           animate={{
             width: isSidebarCollapsed ? 80 : 256,
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col relative min-h-screen"
-
-          // className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col relative"
+          className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col relative min-h-screen rounded-lg shadow-md transition-all duration-200 overflow-hidden"
         >
           <div
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="absolute -right-3 top-6 z-10 w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+            className="m-4 w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ml-auto"
           >
             {isSidebarCollapsed ? (
               <ChevronRight className="h-10 w-10 text-[#7E0140]" />
@@ -364,11 +360,10 @@ export default function Dashboard() {
           </nav>
         </motion.div>
         {/* Main Content */}
-        <div className="flex-1 flex flex-col items-center">
+        <div className="flex-1 flex flex-col items-center overflow-x-auto">
           <div className="w-full max-w-7xl mx-auto">
             {/* Header */}
-            <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 sticky top-0 z-10">
-              {/* <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4"> */}
+            <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 sticky top-0 z-10 rounded-lg ">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -385,79 +380,156 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                    <span>From:</span>
-                    <Select
-                      value={dateRange.from}
-                      onValueChange={(value) =>
-                        setDateRange({ ...dateRange, from: value })
-                      }
-                    >
-                      <SelectTrigger className="w-32">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Jan 2025">Jan 2025</SelectItem>
-                        <SelectItem value="Feb 2025">Feb 2025</SelectItem>
-                        <SelectItem value="Mar 2025">Mar 2025</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <span>To:</span>
-                    <Select
-                      value={dateRange.to}
-                      onValueChange={(value) =>
-                        setDateRange({ ...dateRange, to: value })
-                      }
-                    >
-                      <SelectTrigger className="w-32">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Dec 2025">Dec 2025</SelectItem>
-                        <SelectItem value="Nov 2025">Nov 2025</SelectItem>
-                        <SelectItem value="Oct 2025">Oct 2025</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <Button className="bg-[#7E0140] hover:bg-[#660133] text-white">
-                    <Download className="h-4 w-4 mr-2" />
-                    Download Report
-                  </Button>
-                </div>
+                {/* <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+                      <span>From:</span>
+                      <Select
+                        value={dateRange.from}
+                        onValueChange={(value) =>
+                          setDateRange({ ...dateRange, from: value })
+                        }
+                      >
+                        <SelectTrigger className="w-32">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Jan 2025">Jan 2025</SelectItem>
+                          <SelectItem value="Feb 2025">Feb 2025</SelectItem>
+                          <SelectItem value="Mar 2025">Mar 2025</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <span>To:</span>
+                      <Select
+                        value={dateRange.to}
+                        onValueChange={(value) =>
+                          setDateRange({ ...dateRange, to: value })
+                        }
+                      >
+                        <SelectTrigger className="w-32">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Dec 2025">Dec 2025</SelectItem>
+                          <SelectItem value="Nov 2025">Nov 2025</SelectItem>
+                          <SelectItem value="Oct 2025">Oct 2025</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div> */}
+                <Button className="bg-[#7E0140] hover:bg-[#660133] text-white">
+                  <Download className="h-4 w-4 mr-2" />
+                  Download Report
+                </Button>
               </div>
             </div>
+
             <div className="p-4 md:p-6 w-full">
+              {/* <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 pb-4 ml-auto">
+                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 pb-4">
+                  <span>From:</span>
+                  <Select
+                    value={dateRange.from}
+                    onValueChange={(value) =>
+                      setDateRange({ ...dateRange, from: value })
+                    }
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Jan 2025">Jan 2025</SelectItem>
+                      <SelectItem value="Feb 2025">Feb 2025</SelectItem>
+                      <SelectItem value="Mar 2025">Mar 2025</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <span>To:</span>
+                  <Select
+                    value={dateRange.to}
+                    onValueChange={(value) =>
+                      setDateRange({ ...dateRange, to: value })
+                    }
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Dec 2025">Dec 2025</SelectItem>
+                      <SelectItem value="Nov 2025">Nov 2025</SelectItem>
+                      <SelectItem value="Oct 2025">Oct 2025</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div> */}
+              <div className="flex items-center pb-4">
+                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 ml-auto">
+                  <span>From:</span>
+                  <Select
+                    value={dateRange.from}
+                    onValueChange={(value) =>
+                      setDateRange({ ...dateRange, from: value })
+                    }
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Jan 2025">Jan 2025</SelectItem>
+                      <SelectItem value="Feb 2025">Feb 2025</SelectItem>
+                      <SelectItem value="Mar 2025">Mar 2025</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <span>To:</span>
+                  <Select
+                    value={dateRange.to}
+                    onValueChange={(value) =>
+                      setDateRange({ ...dateRange, to: value })
+                    }
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Dec 2025">Dec 2025</SelectItem>
+                      <SelectItem value="Nov 2025">Nov 2025</SelectItem>
+                      <SelectItem value="Oct 2025">Oct 2025</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
               {/* <div className="p-6"> */}
               {/* Stats Grid */}
               <motion.div
                 variants={staggerContainer}
                 initial="initial"
                 animate="animate"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
               >
                 {dashboardStats.map((stat, index) => (
                   <motion.div key={index} variants={fadeInUp}>
-                    <Card className="hover:shadow-lg transition-shadow duration-200 border-0 bg-white dark:bg-gray-800">
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between">
-                          <div className={`p-3 rounded-lg ${stat.bgColor}`}>
+                    <Card
+                      className="hover:shadow-lg transition-shadow duration-200     dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800"
+                      style={{
+                        border: "2px solid #C3C3C4",
+                        borderRadius: "16px",
+                      }}
+                    >
+                      <CardContent className="p-4 ">
+                        <div className="flex items-center justify-start space-x-4">
+                          <div className={`p-2 rounded-lg ${stat.bgColor}`}>
                             <stat.icon className={`h-6 w-6 ${stat.color}`} />
                           </div>
+                          <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
+                            {stat.title}
+                          </h3>
+                        </div>
+                        <div className="mt-4 flex items-center justify-start space-x-2">
+                          <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                            {stat.value}
+                          </p>{" "}
                           <Badge
                             variant="secondary"
                             className="text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400"
                           >
                             {stat.change}
                           </Badge>
-                        </div>
-                        <div className="mt-4">
-                          <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-                            {stat.title}
-                          </h3>
-                          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                            {stat.value}
-                          </p>
                         </div>
                       </CardContent>
                     </Card>
@@ -466,61 +538,54 @@ export default function Dashboard() {
               </motion.div>
 
               {/* Filters */}
-              <motion.div
-                {...fadeInUp}
-                className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6 mb-6"
+              <motion.div {...fadeInUp}>
+                <div className="flex items-center justify-between mb-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6 mb-6 space-x-">
+                  <Select defaultValue="reservation">
+                    <SelectTrigger className="w-40">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="reservation">Reservation</SelectItem>
+                      <SelectItem value="booking">Booking</SelectItem>
+                      <SelectItem value="payment">Payment</SelectItem>
+                    </SelectContent>
+                  </Select>
 
-                // className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 mb-6"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-4">
-                    <Select defaultValue="reservation">
-                      <SelectTrigger className="w-40">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="reservation">Reservation</SelectItem>
-                        <SelectItem value="booking">Booking</SelectItem>
-                        <SelectItem value="payment">Payment</SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <Select defaultValue="stay-status">
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="Stay status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="stay-status">Stay status</SelectItem>
+                      <SelectItem value="stayed">Stayed</SelectItem>
+                      <SelectItem value="cancelled">Cancelled</SelectItem>
+                      <SelectItem value="no-show">No-show</SelectItem>
+                    </SelectContent>
+                  </Select>
 
-                    <Select defaultValue="stay-status">
-                      <SelectTrigger className="w-40">
-                        <SelectValue placeholder="Stay status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="stay-status">Stay status</SelectItem>
-                        <SelectItem value="stayed">Stayed</SelectItem>
-                        <SelectItem value="cancelled">Cancelled</SelectItem>
-                        <SelectItem value="no-show">No-show</SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <Select defaultValue="all-properties">
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="All Properties" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all-properties">
+                        All Properties
+                      </SelectItem>
+                      <SelectItem value="ivy-hotel">Ivy Hotel</SelectItem>
+                      <SelectItem value="grand-hotel">Grand Hotel</SelectItem>
+                    </SelectContent>
+                  </Select>
 
-                    <Select defaultValue="all-properties">
-                      <SelectTrigger className="w-40">
-                        <SelectValue placeholder="All Properties" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all-properties">
-                          All Properties
-                        </SelectItem>
-                        <SelectItem value="ivy-hotel">Ivy Hotel</SelectItem>
-                        <SelectItem value="grand-hotel">Grand Hotel</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    <Select defaultValue="all-guest">
-                      <SelectTrigger className="w-40">
-                        <SelectValue placeholder="All Guest" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all-guest">All Guest</SelectItem>
-                        <SelectItem value="vip">VIP Guests</SelectItem>
-                        <SelectItem value="regular">Regular Guests</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  <Select defaultValue="all-guest">
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="All Guest" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all-guest">All Guest</SelectItem>
+                      <SelectItem value="vip">VIP Guests</SelectItem>
+                      <SelectItem value="regular">Regular Guests</SelectItem>
+                    </SelectContent>
+                  </Select>
 
                   <div className="flex items-center space-x-2">
                     <span className="text-sm text-gray-600 dark:text-gray-300">
@@ -549,16 +614,13 @@ export default function Dashboard() {
               {/* Reservation Statement Table */}
               <motion.div {...fadeInUp}>
                 <Card className="border-0 bg-white dark:bg-gray-800">
-                  {/* <Card className="border-0 bg-white dark:bg-gray-800"> */}
                   <CardHeader>
                     <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {/* <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white"> */}
                       Reservation Statement
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="overflow-x-auto max-w-full">
-                      {/* <div className="overflow-x-auto"> */}
                       {isLoading ? (
                         <div className="flex items-center justify-center py-12">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
