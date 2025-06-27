@@ -26,7 +26,7 @@ export default function Component() {
   const { user, signout } = useAuth();
 
   return (
-    <div className="bg-gray-50" style={{ width: "100vw" }}>
+    <div className="bg-gray-50">
       {/* Top Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
