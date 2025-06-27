@@ -227,7 +227,7 @@ export interface AuthResult {
 export interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (data: SigninFormData) => Promise<AuthResult>;
+  signin: (data: SigninFormData) => Promise<AuthResult>;
   signup: (data: SignupFormData) => Promise<AuthResult>;
   signout: () => void;
 }
@@ -287,7 +287,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = async (data: SigninFormData): Promise<AuthResult> => {
+  const signin = async (data: SigninFormData): Promise<AuthResult> => {
     setIsLoading(true);
     try {
       const result = await apiLogin(data);
@@ -389,7 +389,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, signup, signout }}>
+    <AuthContext.Provider value={{ user, isLoading, signin, signup, signout }}>
       {children}
     </AuthContext.Provider>
   );
